@@ -5,7 +5,7 @@ const ArrowRightIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className="w-5 h-6 mt-px"
     >
       <path
         strokeLinecap="round"
