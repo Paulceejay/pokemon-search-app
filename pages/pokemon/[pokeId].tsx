@@ -1,7 +1,9 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Details from "../../components/pages/PokemonDetailsPage/Details";
 
 const pokemon = ( ) => {
+  const router = useRouter()
     return (
       <>
         <Head>
@@ -10,7 +12,7 @@ const pokemon = ( ) => {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className="bg-gray-100 h-screen">
+        <main className="bg-gray-100 h-full">
           <Details />
         </main>
       </>
