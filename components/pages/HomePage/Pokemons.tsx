@@ -4,11 +4,15 @@ import ArrowRightIcon from "../../icons/ArrowRightIcon";
 import {
   useQuery,
 } from "@tanstack/react-query"
+import { pokeDatas } from "../../../funcs/lib";
+
+// fetch(`https://pokeapi.co/api/v2/pokemon/${data.name}`)
+
+
 
 const Pokemons = ():any => {
-
    const { isLoading, error, data }: any = useQuery({
-     queryKey: ["pokemonData"],
+     queryKey: ["allPokemons"],
      queryFn: () =>
        fetch("https://pokeapi.co/api/v2/pokemon?limit=1279").then(
          (res) => res.json()
@@ -27,7 +31,7 @@ const Pokemons = ():any => {
             <div key={data.name} className="rounded-xl bg-gray-50 md:w-full sm:w-1/2 mx-auto w-11/12">
               <div className="bg-white rounded-t-xl">
                 <Image
-                  src={"/download.png"}
+                  src={pokeDatas}
                   alt=""
                   width={200}
                   height={100}
@@ -58,3 +62,6 @@ const Pokemons = ():any => {
 export default Pokemons;
 
 // `https://pokeapi.co/api/v2/pokemon${key.name}`
+// GetAllPokemon
+// GetPokemon
+// searchPokemon

@@ -1,32 +1,36 @@
 import { create } from "zustand";
-import { useQuery } from "@tanstack/react-query";
 
-// let pokemonUrl:string;
+interface pokemonState {
+  pokemons: any[];
+  searchPokemon: (searchItem: string) => void;
+  fetch: (poke: string) => void;
+  // toggleCompletedState: (id: string) => void;
+}
 
-// const { isLoading, error, data }: any = useQuery({
-//   queryKey: ["pokemonData"],
-//   queryFn: () =>
-//     fetch("https://pokeapi.co/api/v2/pokemon?limit=1279").then((res) =>
-//       res.json()
-//     ),
-// });
-
-// // if (isLoading) return "Loading...";
-
-// // if (error) return "An error has occurred: " + error.message;
-
-// if (data) {
-//   for (const key of data.results) {
-//     pokemonUrl = key.url;
-//     console.log(pokemonUrl);
-//   }
-// }
- 
-const pokemonStore = (set: (state: string | any) => void) => ({
+const pokemonStore = (
+  set: (state: string | any) => void,
+  get: (state: any) => void
+) => ({
   pokemons: [],
-//   searchPokemon: () => set((state) => ({ counter: state.counter + 1 })),
+  fetch: (poke: string) =>
+    set((state: any) => {
+      fetch("https://pokeapi.co/api/v2/pokemon?limit=19").then((res: any) =>
+        res.json()
+      ).then((data: any) => console.log(data))
+    }),
+  searchPokemon: (searchItem: any) =>
+    set((state: any) => {
+      return state.pokemons.filter((data: string) =>
+        data.toLowerCase().includes(searchItem.toLowerCase())
+      );
+    }),
+
+  // fetch: async (poke:string) => {
+  //   const response = await fetch(poke);
+  //   set({ fishies: await response.json() });
+  // },
 });
 
+// useQuery(key, queryFn, { onSuccess: data => setToZustand(data) })
 
-
-export const useStore = create(pokemonStore);
+export const usePokemonStore = create<pokemonState>(pokemonStore);
