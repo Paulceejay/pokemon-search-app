@@ -48,7 +48,7 @@ const Details = ():any => {
       })
       .join(", ");
   }
-console.log(router) 
+
   return (
     <div className="lg:max-w-screen-xl w-11/12 mx-auto py-10">
       <p className="text-green-500 font-DmSans font-bold">
@@ -63,12 +63,12 @@ console.log(router)
           <Image
             src={data.sprites.front_default}
             alt=""
-            width={110}
+            width={310}
             height={100}
             className="w-1/2 mx-auto bg-green-500"
           />
         </div>
-        <div className="bg-yellow-600 rounded-b-xl pt-5 px-5">
+        <div className="bg-yellow-600 rounded-b-xl pt-3 px-5">
           <div className=" text-lg">
             <p className="pb-2 font-DmSans font-normal text-gray-950">
               <span className="text-black font-extrabold capitalize">
@@ -76,27 +76,30 @@ console.log(router)
               </span>
               <span className="capitalize mx-1.5">{data.name}</span>
             </p>
-            <p className="py-2 font-DmSans font-normal text-gray-950">
+            <p className="py-1 font-DmSans font-normal text-gray-950">
               <span className="text-black font-extrabold mr-2">Type:</span>
               {pokeType}
             </p>
-            <p className="py-2 font-DmSans font-normal text-gray-950">
+            <p className="py-1 font-DmSans font-normal text-gray-950">
               <span className="text-black font-extrabold mr-2">Stats:</span>
               {pokeStats}
             </p>
-            <p className="py-2 font-DmSans font-normal text-gray-950">
+            <p className="py-1 font-DmSans font-normal text-gray-950">
               <span className="text-black font-extrabold mr-2">Abilities:</span>
               {pokeAbilities}
             </p>
-            <p className="py-2 font-DmSans font-normal text-gray-950">
+            <p className="py-1 font-DmSans font-normal text-gray-950">
               <span className="text-black font-extrabold mr-2">
                 Some Moves:
               </span>
               {pokeMoves}
             </p>
           </div>
-          <p className="text-base text-blue-900 font-DmSans font-normal py-5">
-            <Link href={`https://bulbapedia.bulbagarden.net/wiki/${data.name}`}>
+          <p className="text-base text-blue-900 font-DmSans font-normal pb-2 pt-3">
+            <Link
+              href={`https://bulbapedia.bulbagarden.net/wiki/${data.name}`}
+              target="_blank"
+            >
               <span className="flex gap-1 justify-center items-center">
                 More details at bulbapedia
                 <ArrowRightIcon />
@@ -110,3 +113,5 @@ console.log(router)
 };
 
 export default Details;
+
+// We couldn't find your pokemon

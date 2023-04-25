@@ -10,8 +10,20 @@ async function pokemonData() {
 
   const pokeData = response;
 
-  console.log(pokeData);
+  // console.log(pokeData);
   pokeDatas = pokeData.sprites.front_default
 }
 
 pokemonData();
+
+//  dataName = useQuery({
+//   queryKey: ["allPokemons"],
+//   queryFn: () =>
+//     fetch("https://pokeapi.co/api/v2/pokemon?limit=1279").then((res) =>
+//       res.json()
+//     ),
+// });
+
+// if (data) {
+//   console.log(data.name);
+// }

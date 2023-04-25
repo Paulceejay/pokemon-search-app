@@ -4,11 +4,11 @@ import ArrowRightIcon from "../../icons/ArrowRightIcon";
 import {
   useQuery,
 } from "@tanstack/react-query"
-import { pokeDatas } from "../../../funcs/lib";
+import { pokeDatas, dataName } from "../../../funcs/lib";
+export let pokeName:any
+// import { data } from "../../../funcs/gettingPokeName";
 
 // fetch(`https://pokeapi.co/api/v2/pokemon/${data.name}`)
-
-
 
 const Pokemons = ():any => {
    const { isLoading, error, data }: any = useQuery({
@@ -28,11 +28,11 @@ const Pokemons = ():any => {
       <div className=" grid lg:grid-cols-3 md:grid-cols-2 gap-7">
         {data.results.map((data: any) => {
           return (
-            <div key={data.name} className="rounded-xl bg-gray-50 md:w-full sm:w-1/2 mx-auto w-11/12">
+            <div key={data.name} className="rounded-xl bg-gray-200 md:w-full sm:w-1/2 mx-auto w-11/12">
               <div className="bg-white rounded-t-xl">
                 <Image
                   src={pokeDatas}
-                  alt=""
+                  alt={`image for ${data.name}`}
                   width={200}
                   height={100}
                   className="w-1/2 mx-auto bg-white"
