@@ -2,10 +2,12 @@ import SearchIcon from "../../icons/SearchIcon";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 let searchItems: any;
 const SearchSection = () => {
-  const [searchData, setSearchData] = useState();
+  const router = useRouter()
+  const [searchData, setSearchData] = useState("");
 
   const { isLoading, error, data }: any = useQuery({
     queryKey: ["searchPokemons"],
@@ -18,6 +20,15 @@ const SearchSection = () => {
   const onChangeHandler = (e: any) => {
     setSearchData(e.target.value);
   };
+  
+  const onClickHandler = (e:any) => {
+      if(searchData === ""){
+        return
+      }else{
+        router.push(`/pokemon/${searchData}`);
+      }
+  }
+
   if (data) {
     for (const key of data.results) {
       searchItems = data.results
@@ -53,10 +64,11 @@ const SearchSection = () => {
             placeholder="Search"
             className="outline-none pr-3 md:text-xl text-lg font-bold font-DmSans text-gray-500 w-full  px-4 xl:py-6 py-4"
             onChange={onChangeHandler}
+            value={searchData}
           />
         </div>
         <div className=" bg-blue-950 lg:w-[15%] md:w-[20%] w-[35%] rounded-r-lg">
-          <button className="text-white md:text-2xl text-lg w-full mx-auto px-1 font-DmSans xl:py-6 py-4 ">
+          <button onClick={onClickHandler} className="text-white md:text-2xl text-lg w-full mx-auto px-1 font-DmSans xl:py-6 py-4 ">
             Search
           </button>
         </div>

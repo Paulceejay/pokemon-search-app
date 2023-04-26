@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Details from "../../components/pages/PokemonDetailsPage/Details";
 
 const pokemon = ( ) => {
-  const router = useRouter()
     return (
       <>
         <Head>
