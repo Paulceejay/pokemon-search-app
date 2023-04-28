@@ -1,17 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowRightIcon from "../../icons/ArrowRightIcon";
 
-const PokemonCard = ({dataName, src}:any) => {
-  //  const { isLoading, error, data }: any = useQuery({
-  //    queryKey: ["allPokemons"],
-  //    queryFn: () =>
-  //      fetch(`https://pokeapi.co/api/v2/pokemon/${dataName}`).then((res) =>
-  //        res.json()
-  //      ),
-  //  });
-  
+const PokemonCard = ({dataName, src}:any) => {  
     return (
       <li
       key={dataName}

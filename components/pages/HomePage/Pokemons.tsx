@@ -1,4 +1,3 @@
-import ArrowRightIcon from "../../icons/ArrowRightIcon";
 import {
   useQuery,
 } from "@tanstack/react-query"
@@ -7,16 +6,22 @@ import LoadingSpiner from "../../icons/LoadingSpiner";
 import PokemonCard from "./PokemonCard";
 import Paginate from "../../pagination/PokemonPagination";
 import { useState } from "react";
-export let pokeName:any
 
-let pokeContent:any
+let pokeContent:any, hidden:string
 
 const Pokemons = ():any => {
      const [currentPage, setCurrentPage] = useState(1);
      const [postsPerPage] = useState(12);
+     
+     if(currentPage === 1){
+        hidden = 'hidden';
+     }else {
+       hidden = 'block'
+     }
 
      const decreasePageHandler = () => {
        setCurrentPage((page) => page - 1);
+        window.scrollTo({ top: 0, behavior: "smooth" });
        return currentPage
      };
 
@@ -62,6 +67,7 @@ const Pokemons = ():any => {
           prevPage={decreasePageHandler}
           paginate={currentPage}
           nextPage={increasePageHandler}
+          prevPageHidden={hidden}
         />
       )}
     </section>
