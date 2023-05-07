@@ -10,7 +10,6 @@ async function pokemonData() {
 
   const pokeData = response;
 
-  // console.log(pokeData);
   pokeDatas = pokeData.sprites.front_default
 }
 
